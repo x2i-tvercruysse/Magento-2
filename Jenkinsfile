@@ -15,16 +15,7 @@ vendor/bin/phpcs --standard=MEQP2 --extensions=php,phtml --report=checkstyle --r
     }
     stage('Report') {
       steps {
-        step(
-            [
-              $class: 'CheckStylePublisher',
-              canComputeNew: false,
-              defaultEncoding: '',
-              healthy: '100',
-              pattern: 'build/logs/checkstyle.xml',
-              unHealthy: '999'
-            ]
-          )
+        checkstyle(healthy: '100', unHealthy: '999', pattern: 'build/logs/checkstyle.xml')
       }
     }
   }
