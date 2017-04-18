@@ -1,10 +1,20 @@
-
 pipeline {
   agent any
   stages {
-    stage('TODO') {
+    stage('Build') {
       steps {
-        echo 'TODO'
+        echo 'Building module'
+        sh 'composer install'
+      }
+    }
+    stage('QA') {
+      steps {
+        echo 'phpcs goes here'
+      }
+    }
+    stage('Report') {
+      steps {
+        echo 'gen report goes here'
       }
     }
   }
