@@ -43,7 +43,7 @@
     "files": [ "registration.php" ]
   },
   "scripts": {
-    "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/magento/marketplace-eqp",
-    "post-update-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/magento/marketplace-eqp"
+    "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/magento/marketplace-eqp, ../../..",
+    "post-update-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/magento/marketplace-eqp, ../../.."
   }
 }
