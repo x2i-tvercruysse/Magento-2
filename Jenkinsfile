@@ -3,13 +3,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Building module'
         sh 'composer install'
       }
     }
-    stage('QA') {
+    stage('Static code analysis') {
       steps {
-        echo 'phpcs goes here'
+        sh 'vendor/bin/phpcs --standard=MEQP2 --extensions=php,phtml --report=checkstyle --report-file=build/logs/checkstyle.xml .'
       }
     }
     stage('Report') {
