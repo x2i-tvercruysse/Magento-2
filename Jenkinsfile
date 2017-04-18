@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Static code analysis') {
       steps {
-        sh '''mkdir build/logs
+        sh '''mkdir -p build/logs
 vendor/bin/phpcs --standard=MEQP2 --extensions=php,phtml --report=checkstyle --report-file=build/logs/checkstyle.xml .'''
       }
     }
