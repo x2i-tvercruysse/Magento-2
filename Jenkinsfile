@@ -10,7 +10,7 @@ pipeline {
       steps {
         sh '''mkdir -p build/logs
 mkdir -p build/logs
-vendor/bin/phpcs --standard=MEQP2 --extensions=php,phtml --report=checkstyle --report-file=build/logs/checkstyle.xml --ignore=vendor .'''
+vendor/bin/phpcs --standard=MEQP2 --extensions=php,phtml --report=checkstyle --report-file=build/logs/checkstyle.xml --ignore=vendor --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 .'''
       }
     }
     stage('Report') {
