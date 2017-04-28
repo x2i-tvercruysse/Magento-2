@@ -20,6 +20,7 @@ vendor/bin/phpcpd -n --exclude=vendor --log-pmd=build/logs/pmd-cpd.xml . || true
       steps {
         checkstyle(healthy: '100', unHealthy: '999', pattern: 'build/logs/checkstyle.xml')
         dry(pattern: 'build/logs/pmd-cpd.xml')
+        echo 'done'
       }
     }
   }
