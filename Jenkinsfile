@@ -18,9 +18,7 @@ vendor/bin/phpcpd -n --exclude=vendor --log-pmd=build/logs/pmd-cpd.xml . || true
     }
     stage('Report') {
       steps {
-        checkstyle(healthy: '100', unHealthy: '999', pattern: 'build/logs/checkstyle.xml')
-        dry(pattern: 'build/logs/pmd-cpd.xml')
-        echo 'done'
+        echo 'moved'
       }
     }
     stage('Package and Validate') {
@@ -29,5 +27,13 @@ vendor/bin/phpcpd -n --exclude=vendor --log-pmd=build/logs/pmd-cpd.xml . || true
         sh 'php /home/x2i/gigya/marketplace-tools/validate_m2_package.php gigya_magento2-1.0.0.zip > build/logs/validate-m2-package.log'
       }
     }
+  }
+  post {
+    always {
+      checkstyle(healthy: '100', unHealthy: '999', pattern: 'build/logs/checkstyle.xml')
+      dry(pattern: 'build/logs/pmd-cpd.xml')
+      
+    }
+    
   }
 }
