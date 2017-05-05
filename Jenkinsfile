@@ -4,6 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'composer install'
+        sh './vendor/bin/phpcs --config-set installed_paths vendor/magento/marketplace-eqp'
       }
     }
     stage('Static code analysis') {
