@@ -19,7 +19,7 @@ vendor/bin/phpcpd -n --exclude=vendor --log-pmd=build/logs/pmd-cpd.xml . || true
     stage('Package and Validate') {
       steps {
         sh 'zip -r gigya_magento2-1.0.0.zip . -x ".git/*" "vendor/*"'
-        sh 'php /home/x2i/gigya/marketplace-tools/validate_m2_package.php gigya_magento2-1.0.0.zip'
+        sh 'php /home/x2i/gigya/marketplace-tools/validate_m2_package.php gigya_magento2-1.0.0.zip > build/logs/validate-m2-package.log'
       }
     }
     stage('Report') {
